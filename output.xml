@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.0.4 (Python 3.6.5 on win32)" generated="20180717 11:04:37.686">
+<suite id="s1" name="2stage-DataEntry" source="C:\Users\MP1CCW3X\Documents\sendit-automated\2stage_0.01\2stage-DataEntry.robot">
+<test id="s1-t1" name="2Stage website Data Entry">
+<kw name="Login to 2Stage by">
+<arguments>
+<arg>${admin_username}</arg>
+<arg>${admin_password}</arg>
+</arguments>
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${url_login}</arg>
+<arg>chrome</arg>
+</arguments>
+<msg timestamp="20180717 11:04:38.943" level="INFO">Opening browser 'chrome' to base url 'https://staging.customer.sendit.asia/th/2stage/login'.</msg>
+<status status="PASS" starttime="20180717 11:04:38.943" endtime="20180717 11:04:48.811"></status>
+</kw>
+<kw name="Maximize Browser Window" library="Selenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20180717 11:04:48.812" endtime="20180717 11:04:50.023"></status>
+</kw>
+<kw name="Element Should Be Visible" library="Selenium2Library">
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<arguments>
+<arg>${css_login_modal}</arg>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20180717 11:04:50.055" level="INFO">Element 'css=div.login-container__loginform___2rEJe' is displayed.</msg>
+<status status="PASS" starttime="20180717 11:04:50.023" endtime="20180717 11:04:50.055"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${css_username}</arg>
+<arg>${username}</arg>
+</arguments>
+<msg timestamp="20180717 11:04:50.055" level="INFO">Typing text 'test_admin@sendit.asia' into text field '//div[1]/div/div/div/div[1]/input'.</msg>
+<status status="PASS" starttime="20180717 11:04:50.055" endtime="20180717 11:04:50.276"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${css_password}</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20180717 11:04:50.277" level="INFO">Typing text 'sendit1234' into text field '//div[1]/div/div/div/div[2]/input'.</msg>
+<status status="PASS" starttime="20180717 11:04:50.276" endtime="20180717 11:04:50.442"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>3s</arg>
+</arguments>
+<msg timestamp="20180717 11:04:53.444" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20180717 11:04:50.443" endtime="20180717 11:04:53.445"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${css_loginbtn}</arg>
+</arguments>
+<msg timestamp="20180717 11:04:53.446" level="INFO">Clicking element '//div[1]/div/div/div/div[3]/button'.</msg>
+<status status="PASS" starttime="20180717 11:04:53.446" endtime="20180717 11:04:53.629"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>1s</arg>
+</arguments>
+<msg timestamp="20180717 11:04:54.630" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20180717 11:04:53.629" endtime="20180717 11:04:54.630"></status>
+</kw>
+<status status="PASS" starttime="20180717 11:04:38.943" endtime="20180717 11:04:54.631"></status>
+</kw>
+<kw name="Go to Data Entry page">
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${css_DataEntrybtn}</arg>
+<arg>5s</arg>
+</arguments>
+<status status="PASS" starttime="20180717 11:04:54.634" endtime="20180717 11:04:57.247"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${css_DataEntrybtn}</arg>
+</arguments>
+<msg timestamp="20180717 11:04:57.248" level="INFO">Clicking element '//div/div/div[2]/ul/li[5]/a/i'.</msg>
+<status status="PASS" starttime="20180717 11:04:57.247" endtime="20180717 11:04:57.582"></status>
+</kw>
+<status status="PASS" starttime="20180717 11:04:54.633" endtime="20180717 11:04:57.582"></status>
+</kw>
+<status status="PASS" starttime="20180717 11:04:38.942" endtime="20180717 11:04:57.583" critical="yes"></status>
+</test>
+<status status="PASS" starttime="20180717 11:04:37.689" endtime="20180717 11:04:57.585"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="2stage-DataEntry">2stage-DataEntry</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
