@@ -1,7 +1,7 @@
 *** Settings ***
 Library					Selenium2Library
 Suite Setup
-
+Suite Teardown		Close All Browsers
 
 
 *** Variables ***
@@ -39,20 +39,20 @@ ${css_inputDCAddress}						//div/div/div[3]/div/div[3]/div/div[2]/textarea
 
 
 #Data For test Create
-${DCName}									DC Sukhumvit 25
-${DCAddress}							Richmond Office Building Soi Sukhumvit 26 Khwaeng Khongton Khet Khongtei Bangkok 10110 (Test Create)
+${DCName}									DC Sukhumvit 22
+${DCAddress}							Richmond Office Building Soi Sukhumvit 23 Khwaeng Khongton Khet Khongtei Bangkok 10110 (Test Create)
 
 
 #Data For test Edit
-${DCNameEdit}									DC Sukhumvit Richmond Office
-${DCAddressEdit}							Richmond Office Building Soi Sukhumvit 26 Khwaeng Khongton Khet Khongtei Bangkok 10110 (Test Edit)
+${DCNameEdit}									DC Sukhumvit 23
+${DCAddressEdit}							Richmond Office Building Soi Sukhumvit 23 Khwaeng Khongton Khet Khongtei Bangkok 10110 (Test Edit)
 
 
 ${css_CreateSAVEbtn}							//div/div/div[3]/div/div[3]/div/div[3]/button[1]
 ${css_CreateCANCLEbtn}						//div/div/div[3]/div/div[3]/div/div[3]/button[2]/span
 
 
-${css_SelecetDCForEdit}							//*[contains(text(),'DC Sukhumvit 25')]
+${css_SelecetDCForEdit}							//*[contains(text(),'DC Sukhumvit 22')]
 ${css_Editbtn}											//div/div/div[3]/div/div[3]/div/button
 ${css_EditDisable_Enablebtn}				//div/div/div[3]/div/div[3]/div/div[3]/div/div[2]
 

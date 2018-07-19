@@ -1,7 +1,7 @@
 *** Settings ***
 Library					Selenium2Library
 Suite Setup
-
+Suite Teardown		Close All Browsers
 
 *** Variables ***
 ${url_login}								https://staging.customer.sendit.asia/th/2stage/login
