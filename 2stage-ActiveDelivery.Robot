@@ -1,6 +1,7 @@
 *** Settings ***
 Library					Selenium2Library
 Suite Setup
+Suite Teardown		Close All Browsers
 
 
 *** Variables ***
