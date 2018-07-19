@@ -47,7 +47,7 @@ Sorting
 	# Click Button    						            ${css_Choosefilebtn}
 	# Choose File    													${css_Choosefilebtn}  				C://Users/MP1CCW3X/Downloads/Sorting.xlsx
 	# Choose File    													${css_Choosefilebtn}  				C://Users/MP1CCW3X/Downloads/test.txt
-	Choose File    													id=document				C:\\Users\\MP1CCW3X\\Desktop\\Sorting.xlsx
+	Choose File    													id=document				C:\\Users\\MP1CCTG4\\Desktop\\Sorting.xlsx
 	Sleep    3s
 	Wait Until Element Is Visible 			    ${css_Uplodefilebtn}  		5s
 	Click element  													${css_Uplodefilebtn}
