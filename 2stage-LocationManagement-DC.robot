@@ -52,7 +52,7 @@ ${css_CreateSAVEbtn}							//div/div/div[3]/div/div[3]/div/div[3]/button[1]
 ${css_CreateCANCLEbtn}						//div/div/div[3]/div/div[3]/div/div[3]/button[2]/span
 
 
-${css_SelecetDCForEdit}							//*[contains(text(),'DC Sukhumvit 26')]
+${css_SelecetDCForEdit}							//*[contains(text(),'DC Sukhumvit 25')]
 ${css_Editbtn}											//div/div/div[3]/div/div[3]/div/button
 ${css_EditDisable_Enablebtn}				//div/div/div[3]/div/div[3]/div/div[3]/div/div[2]
 
