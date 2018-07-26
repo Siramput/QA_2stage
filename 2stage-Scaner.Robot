@@ -17,7 +17,7 @@ ${css_loginbtn}								//div[1]/div/div/div/div[3]/button
 ${css_Scannerbtn}							//div[1]/div/div/div[2]/ul/li[6]/a/i
 ${css_Readbtn}								//div/div/div[3]/div/div[2]/div/ul/li[1]/span/span
 ${css_Barcodeinput}						//div/div/div[3]/div/div[3]/div/div/input
-${Barcodeinput1}								TSW000700
+${Barcodeinput1}							TSW000700
 ${Barcodeinput}								TSW180078149-DOC
 
 
@@ -49,7 +49,7 @@ ${css_InBaginput}										//div/div/div[3]/div/div[3]/div/div/input
 #Chack-100
 ${Chack-100_Selectbtn}												//div/div/div[3]/div/div[3]/div/div/div/div/div/span/span
 ${Chack-100_Select}												//*[contains(text(),'SET 570 2018-07-02 5:10 pm')]
-${Chack-100_Bagbtn}												//div/div/div[3]/div/div[4]/div[1]/div/div[1]/span[1]/span
+${Chack-100_Bagbtn}												//div/div/div[3]/div/divจ[4]/div[1]/div/div[1]/span[1]/span
 ${Chack-100_Bag}												//div/div/div[3]/div/div[4]/div[1]/div/div[2]/a
 ${Chack-100_LocationBtn}												//div/div/div[3]/div/div[4]/div[1]/div/div[1]/span[2]/span
 
@@ -185,18 +185,66 @@ Deliver
 
 
 *** Test Cases ***
-2Stage website
+2Stage website Scanner // Read
       Login to 2Stage by						${admin_username}				${admin_password}
       Go to Scanner page
 			Read
-			Set Size
-			Pick Up
-			In Bag
-			# Return Courier
-			# Scan EYCode
-			# Move Bag
-		  Chack-100
-			# Returned Customer
+
 			# Airway Bill
 			# Print Bag
 			Deliver
+
+2Stage website Scanner // Set Size
+			Login to 2Stage by						${admin_username}				${admin_password}
+			Go to Scanner page
+			Set Size
+
+2Stage website Scanner // Pick Up
+			Login to 2Stage by						${admin_username}				${admin_password}
+			Go to Scanner page
+			Pick Up
+
+2Stage website Scanner // In Bag
+			Login to 2Stage by						${admin_username}				${admin_password}
+			Go to Scanner page
+			In Bag
+
+2Stage website Scanner // Return Courier
+			Login to 2Stage by						${admin_username}				${admin_password}
+			Go to Scanner page
+			Return Courier
+
+2Stage website Scanner // Scan EYCode
+			Login to 2Stage by						${admin_username}				${admin_password}
+			Go to Scanner page
+			Scan EYCode
+
+2Stage website Scanner // Move Bag
+			Login to 2Stage by						${admin_username}				${admin_password}
+			Go to Scanner page
+			Move Bag
+
+2Stage website Scanner // Chack-100
+			Login to 2Stage by						${admin_username}				${admin_password}
+			Go to Scanner page
+			Chack-100
+
+2Stage website Scanner // Returned Customer
+			Login to 2Stage by						${admin_username}				${admin_password}
+			Go to Scanner page
+			Returned Customer
+
+2Stage website Scanner // Airway Bill
+			      Login to 2Stage by						${admin_username}				${admin_password}
+			      Go to Scanner page
+						Airway Bill
+
+2Stage website Scanner // Print Bag
+						Login to 2Stage by						${admin_username}				${admin_password}
+						Go to Scanner page
+						Print Bag
+
+2Stage website Scanner // Deliver
+						Login to 2Stage by						${admin_username}				${admin_password}
+						Go to Scanner page
+						Deliver

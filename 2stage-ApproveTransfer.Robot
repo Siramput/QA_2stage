@@ -72,7 +72,18 @@ Approve
 
 
 *** Test Cases ***
-2Stage website Home Admin
+
+
+2Stage website ApproveTransfer Search
+      Login to 2Stage by						${admin_username}				${admin_password}
+			Go to Approve Transfer Page
+			Search
+
+
+
+
+
+2Stage website ApproveTransfer Search See by Status Approve
       Login to 2Stage by						${admin_username}				${admin_password}
 			Go to Approve Transfer Page
 			Search

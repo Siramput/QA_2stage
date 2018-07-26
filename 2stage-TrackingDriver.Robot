@@ -48,7 +48,7 @@ Search by click name
 
 
 *** Test Cases ***
-2Stage website Search Driver
+2Stage website Tracking Driver
       Login to 2Stage by						${admin_username}				${admin_password}
       Go to Tracking Driver page
       #Search by input name

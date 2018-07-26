@@ -144,7 +144,7 @@ Action Assing
 						fillter
 						Action Assing
 
-# 2Stage website Pickups Action Assing
+# 2Stage website Pickups Action Assing cancle
 # 						Login to 2Stage by						${admin_username}				${admin_password}
 # 						Go to Pickups page
 # 						Action cancle

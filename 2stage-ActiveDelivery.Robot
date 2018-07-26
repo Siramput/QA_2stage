@@ -1,8 +1,7 @@
 *** Settings ***
 Library					Selenium2Library
 Suite Setup
-Suite Teardown		Close All Browsers
-
+# Suite Teardown		Close All Browsers
 
 *** Variables ***
 ${url_login}								  https://staging.customer.sendit.asia/th/2stage/login
@@ -22,14 +21,21 @@ ${css_Customerbtn}					//div/div/div[3]/div/div[1]/div[1]/div[2]/div/span/span
 ${Customer}									//*[contains(text(),'ADEN')]
 ${css_startDatebtn}					//div/div/div[3]/div/div[1]/span/div[1]/div[2]/div/div[1]/div[1]
 ${backDatebtn}							//div/div/div[3]/div/div[1]/span/div[1]/div[2]/div/div[2]/div/div/div[2]/div[1]/button[1]
-${startDate}								//div/div/div[3]/div/div[1]/span/div[1]/div[2]/div/div[2]/div/div/div[2]/div[2]/div/div[2]/table/tbody/tr[4]/td[2]/button
-${LastDate}									//div/div/div[3]/div/div[1]/span/div[1]/div[2]/div/div[2]/div/div/div[2]/div[2]/div/div[3]/table/tbody/tr[3]/td[4]/button
+${preDatebtn}								//div/div/div[3]/div/div[1]/span/div[1]/div[2]/div/div[2]/div/div/div[2]/div[1]/button[2]
+# ${startDate}								//div/div/div[3]/div/div[1]/span/div[1]/div[2]/div/div[2]/div/div/div[2]/div[2]/div/div[2]/table/tbody/tr[4]/td[2]/button
+${startDate}								//div/div/div[3]/div/div[1]/span/div[1]/div[2]/div/div[2]/div/div/div[2]/div[2]/div/div[2]/table/tbody/tr[2]/td[1]/button
+${LastDate}									//div/div/div[3]/div/div[1]/span/div[1]/div[2]/div/div[2]/div/div/div[2]/div[2]/div/div[3]/table/tbody/tr[4]/td[4]/button
 ${css_ParcelSizebtn}				//div/div/div[3]/div/div[1]/span/div[2]/div[2]/div/span/span
-${ParcelSize}								//*[contains(text(),'UNKNOWN')]
+${ParcelSize}								//*[contains(text(),'SATCHEL')]
 ${css_Statusbtn}						//div/div/div[3]/div/div[1]/span/div[3]/div[2]/div/span/span
 ${Status}										//*[contains(text(),'READY')]
 ${css_Bagbtn}								//div/div/div[3]/div/div[1]/span/div[4]/div[2]/div/span/span
-${Bag}											//*[contains(text(),'WERE')]
+${Bag}											//*[contains(text(),'ACOM')]
+${css_PickupShopCodebtn}		//div/div/div[3]/div/div[1]/span/div[5]/div[2]/div/span/span
+${PickupShopCode}						//*[contains(text(),'05878')]
+${css_DeliveryShopCode}			//div/div/div[3]/div/div[1]/span/div[6]/div[2]/div/span/span
+${DeliveryShopCode}					//*[contains(text(),'')]
+
 #Search Status View
 ${css_StatusViewbtn}				//div/div/div[3]/div/div[1]/div[2]/a[1]/span
 ${css_OnGoingbtn}						//div/div/div[3]/div/div[1]/div[1]/div[2]/button[1]/span
@@ -39,12 +45,11 @@ ${css_Statusbtn2}						//div/div/div[3]/div/div[1]/span/div[2]/div[2]/div/span/s
 
 ${css_REFRESHbtn}					css=.sendicon-icon-sync
 
-
-
-${css_Actionbtn}								//div/div/div[3]/div/div[1]/div[4]/a[4]/span
-${css_Exportbtn}								//div/div/div[3]/div/div[1]/div[4]/ul/li[1]/a/span
-${css_Opennewtapbtn}						//div/div/div[3]/div/div[1]/div[4]/ul/li[2]/a/span
-${css_Customizecolumnsbtn}			//div/div/div[3]/div/div[1]/div[4]/ul/li[3]/a/span
+#Action
+${css_Actionbtn}								//div/div/div[3]/div/div[1]/div[2]/a[4]/i
+${css_Exportbtn}								//div/div/div[3]/div/div[1]/div[2]/ul/li[1]/a/span
+${css_Opennewtapbtn}						//div/div/div[3]/div/div[1]/div[2]/ul/li[2]/a/span
+${css_Customizecolumnsbtn}			//div/div/div[3]/div/div[1]/div[2]/ul/li[3]/a/span
 
 
 ${css_Viewclicklinkbtn}			//div/div/div[3]/div/div[4]/table/tbody/tr[1]/td[2]/a
@@ -104,6 +109,9 @@ ${css_editRECIPIENTSavebtn} 					//div/div/div[4]/div/div[5]/div/div[2]/div[3]/d
 ${css_editRECIPIENTCanclebtn} 				//div/div/div[4]/div/div[5]/div/div[2]/div[3]/div[3]/div/button[2]
 
 
+${css_Searchbtn} 				//div/div/div[3]/div/div[3]/table/tbody/tr/td[1]/input
+
+
 *** Keywords ***
 Login to 2Stage by		    [Arguments]			${username}					${password}
 	Open Browser							              ${url_login}					chrome
@@ -114,40 +122,52 @@ Login to 2Stage by		    [Arguments]			${username}					${password}
 	Sleep  3s
 	Click element  							            ${css_loginbtn}
 	Sleep  1s
+
 Go to Active Delivery page
 	Wait Until Element Is Visible 			    ${css_ActiveDeliverybtn}  		5s
 	Click element    						            ${css_ActiveDeliverybtn}
 
-search by Status View
+search by Status View OnGoing
 	Wait Until Element Is Visible 			    ${css_StatusViewbtn}	  		5s
 	Click element    						            ${css_StatusViewbtn}
 	Sleep    5S
 	Wait Until Element Is Visible 			    ${css_OnGoingbtn}	  		5s
 	Click element    						            ${css_OnGoingbtn}
 	Sleep    5S
-	Wait Until Element Is Visible 			    ${css_Historybtn}	  		5s
-	Click element    						            ${css_Historybtn}
-	Sleep    5S
 
-	Wait Until Element Is Visible 			    ${css_Customerbtn2}	  		5s
-	Click element    						            ${css_Customerbtn2}
-	Wait Until Element Is Visible 			    ${Customer}	  		5s
-	Click element    						            ${Customer}
-	Wait Until Element Is Visible 			    ${css_startDatebtn}		  		5s
-	Click element    						            ${css_startDatebtn}
-	Wait Until Element Is Visible 			    ${backDatebtn}		  		5s
-	Click element    						            ${backDatebtn}
-	Sleep    10s
-	Wait Until Element Is Visible 			    ${startDate}		  		5s
-	Click element    						            ${startDate}
-	Wait Until Element Is Visible 			    ${LastDate}		  		5s
-	Click element    						            ${LastDate}
-	Wait Until Element Is Visible 			    ${css_Statusbtn2}			  		5s
-	Click element    						            ${css_Statusbtn2}
-	Wait Until Element Is Visible 			    ${Status}			  		5s
-	Click element    						            ${Status}
 	Wait Until Element Is Visible 			    ${css_REFRESHbtn}			  		5s
 	Click element    						            ${css_REFRESHbtn}
+
+
+search by Status View History
+		Wait Until Element Is Visible 			    ${css_StatusViewbtn}	  		5s
+		Click element    						            ${css_StatusViewbtn}
+		Sleep    5S
+
+		Wait Until Element Is Visible 			    ${css_Historybtn}	  		5s
+		Click element    						            ${css_Historybtn}
+		Sleep    5S
+
+		Wait Until Element Is Visible 			    ${css_Customerbtn2}	  		5s
+		Click element    						            ${css_Customerbtn2}
+		Wait Until Element Is Visible 			    ${Customer}	  		5s
+		Click element    						            ${Customer}
+		Wait Until Element Is Visible 			    ${css_startDatebtn}		  		5s
+		Click element    						            ${css_startDatebtn}
+		Wait Until Element Is Visible 			    ${backDatebtn}		  		5s
+		Click element    						            ${backDatebtn}
+		Sleep    10s
+		Wait Until Element Is Visible 			    ${startDate}		  		5s
+		Click element    						            ${startDate}
+		Wait Until Element Is Visible 			    ${LastDate}		  		5s
+		Click element    						            ${LastDate}
+		Wait Until Element Is Visible 			    ${css_Statusbtn2}			  		5s
+		Click element    						            ${css_Statusbtn2}
+		Wait Until Element Is Visible 			    ${Status}			  		5s
+		Click element    						            ${Status}
+		Wait Until Element Is Visible 			    ${css_REFRESHbtn}			  		5s
+		Click element    						            ${css_REFRESHbtn}
+
 
 search by Set View
 	Wait Until Element Is Visible 			    ${css_SetViewbtn}	  		5s
@@ -186,6 +206,74 @@ search by Set View
 	Wait Until Element Is Visible 			    ${css_REFRESHbtn}			  		5s
 	Click element    						            ${css_REFRESHbtn}
 
+Filter by Customer
+	Wait Until Element Is Visible 			    ${css_SetViewbtn}	  		5s
+	Click element    						            ${css_SetViewbtn}
+	Wait Until Element Is Visible 			    ${css_Customerbtn}	  		5s
+	Click element    						            ${css_Customerbtn}
+	Wait Until Element Is Visible 			    ${Customer}	  		5s
+	Click element    						            ${Customer}
+
+Filter by Date Range
+	Wait Until Element Is Visible 			    ${css_SetViewbtn}	  		5s
+	Click element    						            ${css_SetViewbtn}
+
+	Wait Until Element Is Visible 			    ${css_startDatebtn}		  		5s
+	Click element    						            ${css_startDatebtn}
+	Sleep    5s
+	Wait Until Element Is Visible 			    ${backDatebtn}		  		5s
+	Click element    						            ${backDatebtn}
+	Sleep    5s
+	Wait Until Element Is Visible 			    ${backDatebtn}		  		5s
+	Click element    						            ${backDatebtn}
+	Sleep    5s
+	Wait Until Element Is Visible 			    ${backDatebtn}		  		5s
+	Click element    						            ${backDatebtn}
+	Sleep    5s
+	Wait Until Element Is Visible 			    ${startDate}		  		5s
+	Click element    						            ${startDate}
+	Sleep    5s
+
+	Wait Until Element Is Visible 			    ${preDatebtn}		  		5s
+	Click element    						            ${preDatebtn}
+	Sleep    5s
+	Wait Until Element Is Visible 			    ${preDatebtn}		  		5s
+	Click element    						            ${preDatebtn}
+	Sleep    5s
+	Wait Until Element Is Visible 			    ${LastDate}		  		5s
+	Click element    						            ${LastDate}
+
+Filter by Parcel Size
+	Wait Until Element Is Visible 			    ${css_ParcelSizebtn}		  		5s
+	Click element    						            ${css_ParcelSizebtn}
+	Wait Until Element Is Visible 			    ${ParcelSize}			  		5s
+	Click element    						            ${ParcelSize}
+
+Filter by Status
+	Wait Until Element Is Visible 			    ${css_Statusbtn}			  		5s
+	Click element    						            ${css_Statusbtn}
+	Wait Until Element Is Visible 			    ${Status}			  		5s
+	Click element    						            ${Status}
+
+Filter by Bag
+	Wait Until Element Is Visible 			    ${css_Bagbtn}		  		5s
+	Click element    						            ${css_Bagbtn}
+	Wait Until Element Is Visible 			    ${Bag}		  		5s
+	Click element    						            ${Bag}
+
+Filter by Pick up Shop Code
+	Wait Until Element Is Visible 			    ${css_PickupShopCodebtn}		  		5s
+	Click element    						            ${css_PickupShopCodebtn}
+	Wait Until Element Is Visible 			    ${PickupShopCode}		  		5s
+	Click element    						            ${PickupShopCode}
+
+Filter by Delivery Shop Code
+	Until Element Is Visible 			    			${css_DeliveryShopCode}		  		5s
+	Click element    						            ${css_DeliveryShopCode}
+	Wait Until Element Is Visible 			    ${DeliveryShopCode}		  		5s
+	Click element    						            ${DeliveryShopCode}
+
+
 Action
 		Wait Until Element Is Visible 			    ${css_Actionbtn}	  		5s
 		Click element    						            ${css_Actionbtn}
@@ -221,6 +309,13 @@ View click link
 		Wait Until Element Is Visible 			    ${css_Viewclicklinkbtn}		  		5s
 		Click element  													${css_Viewclicklinkbtn}
 		Sleep    5s
+
+Search
+		Wait Until Element Is Visible 			    ${css_Searchbtn}		5s
+		Click element  													${css_Searchbtn}
+		Input Text    													${css_Searchbtn}		    LUN00030
+
+
 
 Edit
 		Wait Until Element Is Visible 			    ${css_editbtn}		  		5s
@@ -321,27 +416,96 @@ Edit RECIPIENT
 	Click element  													${css_editRECIPIENTSavebtn}
 
 *** Test Cases ***
-2Stage website Active Delivery search by Set View
-      Login to 2Stage by						${admin_username}				${admin_password}
-      Go to Active Delivery page
-			search by Set View
-
-# 2Stage website Active Delivery search by Status View
+# 2Stage website Active Delivery search by Set View
+#       Login to 2Stage by						${admin_username}				${admin_password}
+#       Go to Active Delivery page
+# 			search by Set View
+#
+# 2Stage website Active Delivery search by Status View History
 # 			Login to 2Stage by						${admin_username}				${admin_password}
 # 			Go to Active Delivery page
-# 			search by Status View
+# 			search by Status View History
 #
-# 2Stage website Active Delivery : Action Menu
+# 2Stage website Active Delivery search by Status View OnGoing
+# 			Login to 2Stage by						${admin_username}				${admin_password}
+# 			Go to Active Delivery page
+# 			search by Status View OnGoing
+#
+# 2Stage website Active Delivery search by Status View // Filter by Customer (ADEN)
+# 			Login to 2Stage by						${admin_username}				${admin_password}
+# 			Go to Active Delivery page
+# 			Filter by Customer
+
+# 2Stage website Active Delivery search by Status View // Filter by Date Range (08-04-2018 to 25-07-2018)
+# 				Login to 2Stage by						${admin_username}				${admin_password}
+# 				Go to Active Delivery page
+# 				Filter by Date Range
+
+# 2Stage website Active Delivery search by Status View // Filter by Parcel Size (SATCHEL)
+# 				Login to 2Stage by						${admin_username}				${admin_password}
+# 				Go to Active Delivery page
+# 				Filter by Date Range
+# 				Filter by Parcel Size
+
+# 2Stage website Active Delivery search by Status View // Filter by Status (READY To PICK UP)
+# 				Login to 2Stage by						${admin_username}				${admin_password}
+# 				Go to Active Delivery page
+# 				Filter by Status
+
+
+# 2Stage website Active Delivery search by Status View // Filter by Bag (ACOM)
+# 				Login to 2Stage by						${admin_username}				${admin_password}
+# 				Go to Active Delivery page
+# 				Filter by Date Range
+# 				Filter by Bag
+
+# 2Stage website Active Delivery search by Status View //Filter by Pick up Shop Code
+# 				Login to 2Stage by						${admin_username}				${admin_password}
+# 				Go to Active Delivery page
+# 				Filter by Date Range
+# 				Filter by Pick up Shop Code
+
+# 2Stage website Active Delivery search by Status View //Filter by Delivery Shop Code
+# 				Login to 2Stage by						${admin_username}				${admin_password}
+# 				Go to Active Delivery page
+# 				Filter by Date Range
+# 				Filter by Delivery Shop Code
+
+
+# 2Stage website Active Delivery : Action Menu //Export this filter to excel file
 # 						Login to 2Stage by						${admin_username}				${admin_password}
 # 						Go to Active Delivery page
-# 						search by Status View
+# 						Filter by Date Range
 # 						Action
 # 						Export
+#
+# 2Stage website Active Delivery : Action Menu //Open new tap
+# 						Login to 2Stage by						${admin_username}				${admin_password}
+# 					  Go to Active Delivery page
+# 						Filter by Date Range
 # 						Action
 # 						Open new tap
+#
+# 2Stage website Active Delivery : Action Menu //Customize columns
+# 						Login to 2Stage by						${admin_username}				${admin_password}
+# 						Go to Active Delivery page
+# 						Filter by Date Range
 # 						Action
 # 						Customize columns
+#
+# 2Stage website Active Delivery : Action Menu //View click link
+# 						Login to 2Stage by						${admin_username}				${admin_password}
+# 						Go to Active Delivery page
+# 						Filter by Date Range
+# 						Action
 # 						View click link
+
+2Stage website Active Delivery : Search Consignment
+						Login to 2Stage by						${admin_username}				${admin_password}
+						Go to Active Delivery page
+						Filter by Date Range
+						Search
+
 
 # 2Stage website Active Delivery : Edit
 # 						Login to 2Stage by						${admin_username}				${admin_password}

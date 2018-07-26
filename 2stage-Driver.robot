@@ -51,9 +51,6 @@ ${css_DriversendidPhone}							//div/div/div[3]/div/div[3]/div[1]/form/div[6]/di
 ${css_COURIERbtn}											//div/div/div[3]/div/div[3]/div[2]/div/div[1]/div/div[2]/div/div/div[1]
 ${css_COURIER}												//*[contains(text(),'DHL')]
 
-
-
-
 #################################################################################
 #PERSONAL INFO Data New Driver
 ${DrivernameTH}								ปรีชา

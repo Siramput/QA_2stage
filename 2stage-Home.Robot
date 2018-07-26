@@ -1,7 +1,7 @@
 *** Settings ***
 Library					Selenium2Library
 Suite Setup
-Suite Teardown		Close All Browsers
+# Suite Teardown		Close All Browsers
 
 *** Variables ***
 ${url_login}								  https://staging.customer.sendit.asia/th/2stage/login
@@ -13,6 +13,8 @@ ${css_login_modal}						css=div.login-container__loginform___2rEJe
 ${css_username}								//div[1]/div/div/div/div[1]/input
 ${css_password}								//div[1]/div/div/div/div[2]/input
 ${css_loginbtn}								//div[1]/div/div/div/div[3]/button
+
+
 #Go to Admin Page
 # ${css_Adminbtn}          			//div/div/div[1]/div/div[2]/ul/li[3]
 #${css_Change Passwordbtn}			//*[contains(text(),'Change Password')]
@@ -32,10 +34,9 @@ ${CurrentPassword2}						12341234
 ${NewPassword2}								sendit1234
 ${ConfirmPassword2}						sendit1234
 
-
 *** Keywords ***
 Login to 2Stage by		    [Arguments]			${username}					${password}
-	Open Browser							              ${url_login}				chrome
+	Open Browser							              ${url_login}					chrome
 	Maximize Browser Window
 	Element Should Be Visible				        ${css_login_modal}				5s
 	Input Text								              ${css_username}					${username}
@@ -43,6 +44,8 @@ Login to 2Stage by		    [Arguments]			${username}					${password}
 	Sleep  3s
 	Click element  							            ${css_loginbtn}
 	Sleep  1s
+
+
 Change Password X
 	Wait Until Element Is Visible		css=.globalnav-component__menulist___279ou
 	Mouse Over			css=.globalnav-component__menulist___279ou .globalnav-component__menutext___v7ebC
@@ -67,7 +70,7 @@ Change Password Save
 		Input Text    												 ${css_ConfirmPassword}				${ConfirmPassword}
 		Wait Until Element Is Visible 			   ${css_ChangePasswordbtn}	      		5s
 		Click element                          ${css_ChangePasswordbtn}
-//*[@id="driversPanel"]/table/tbody/tr[1]/td[2]
+
 Change Password Save Return
 				Wait Until Element Is Visible		css=.globalnav-component__menulist___279ou
 				Mouse Over			css=.globalnav-component__menulist___279ou .globalnav-component__menutext___v7ebC
@@ -88,34 +91,52 @@ Change Password Save Return
 
 Logout
 	Wait Until Element Is Visible		css=.globalnav-component__menulist___279ou
-	Mouse Over			css=.globalnav-component__menulist___279ou .globalnav-component__menutext___v7ebC
+	Mouse Over											css=.globalnav-component__menulist___279ou .globalnav-component__menutext___v7ebC
 	Sleep  5s
-	Click Element 		//*[contains(text(),'Logout')]
+	Click Element 									//*[contains(text(),'Logout')]
 	Sleep  5s
 	Confirm Action
 	Sleep  3s
-	Location Should Be		https://staging.customer.sendit.asia/th/2stage/login
+	Location Should Be							https://staging.customer.sendit.asia/th/2stage/login
 
+Change Lang
+	Wait Until Element Is Visible   	css="globalnav-component__menulist___279ou
+	Mouse Over												css="globalnav-component__menulist___279ou .globalnav-component__text-small___3BnPZ
+	Sleep  5s
+	Click Element 		//*[contains(text(),'CN')]
+	Sleep  5s
 
+	Wait Until Element Is Visible   	css="globalnav-component__menulist___279ou"><div class="globalnav-component__menutoggle___24m9U globalnav-component__text-small___3BnPZ
+	Mouse Over												css="globalnav-component__menulist___279ou"><div class="globalnav-component__menutoggle___24m9U globalnav-component__text-small___3BnPZ
+	Click Element 		//*[contains(text(),'EN')]
+	Sleep  5s
+
+	Wait Until Element Is Visible   	css="globalnav-component__menulist___279ou"><div class="globalnav-component__menutoggle___24m9U globalnav-component__text-small___3BnPZ
+	Mouse Over												css="globalnav-component__menulist___279ou"><div class="globalnav-component__menutoggle___24m9U globalnav-component__text-small___3BnPZ
+	Click Element 		//*[contains(text(),'TH')]
 
 
 
 
 *** Test Cases ***
-2Stage website Home Admin Change Password X
-      Login to 2Stage by						${admin_username}				${admin_password}
-      Change Password X
-			Sleep    3s
-			Logout
+# 2Stage website Home Admin Change Password X
+#       Login to 2Stage by						${admin_username}				${admin_password}
+#       Change Password X
+# 			Sleep    3s
+# 			Logout
+#
+# 2Stage website Home Admin Change Password 12341234
+#       Login to 2Stage by						${admin_username}				${admin_password}
+# 			Change Password Save
+# 			Sleep    3s
+# 			Logout
+#
+# 2Stage website Home Admin Change Password 12345678
+# 			Login to 2Stage by						${admin_username}				${NewPassword}
+# 			Change Password Save Return
+# 			Sleep    3s
+# 			Logout
 
-2Stage website Home Admin Change Password 12341234
-      Login to 2Stage by						${admin_username}				${admin_password}
-			Change Password Save
-			Sleep    3s
-			Logout
-
-2Stage website Home Admin Change Password 12345678
-			Login to 2Stage by						${admin_username}				${NewPassword}
-			Change Password Save Return
-			Sleep    3s
-			Logout
+2Stage website Home Admin Change Lang
+			Login to 2Stage by						${admin_username}				${admin_password}
+			Change Lang
